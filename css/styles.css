@@ -1,0 +1,166 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.entrada-blog a {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/** CODIGO AQUI **/
+
+/* DISTRIBUCION DE DOS COLUMNAS IGUALES */
+@media (min-width: 768px) {
+    .dos-columnas {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+
+/* DISTRIBUCION DE TRES COLUMNAS IGUALES */
+@media (min-width: 768px) {
+    .tres-columnas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+/* DISTRIBUCION DE TRES COLUMNAS IGUALES */
+@media (min-width: 768px) {
+    .contenedor-grid {
+        display: grid;
+        grid-template-areas: "izquierda contenido derecha"; /* Manejo de propiedad para asignar posicion a las columnas*/
+        grid-template-columns: 1fr 3fr 1fr; /* Manejo del tamaño de estas propiedades */
+        grid-auto-flow: column;
+        column-gap: 2rem;
+    }
+    .contenido-principal {
+        grid-area: contenido; /* Columna principal de asignacion 3fr */
+    }
+
+    .sidebar-1 {
+        grid-area: izquierda; /* Columna asignada a 1fr */
+    }
+}
+
+/* COLUMN DROP */
+@media (min-width: 480px) {
+    .column-drop-css {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    .primera {
+        grid-column: 1 / 3; /* Posiciones tomadas en columnas que figuran en Mozilla developer edition */
+        grid-row: 2 / 3; /* Posiciones tomadas en filas que figuran en Mozilla developer edition */
+    }
+    .segunda {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+
+    }
+}
+
+@media (min-width: 768px) {
+    .column-drop-css {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .primera {
+        grid-column: 2 / 3;
+        grid-row: unset;
+    }
+    .segunda {
+        grid-column: 3 / 4;
+        grid-row: unset;
+    }
+
+}
+
+/* CON SIDEBAR */
+@media (min-width: 768px) {
+    .con-sidebar {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        column-gap: 4rem;
+        grid-auto-flow: column; /* Acomodamiento en columnas automatico */
+    }
+    .con-side aside {
+        grid-column: 2 / 3;
+    }
+}
+
+/* LAYOUT SHIFTER */
+@media (min-width:768px) {
+    .layout-shifter {
+        display: grid;
+        grid-template-areas: "contenido"
+                             "inferior"; /* Contenedores en areas */
+    }
+
+    .sidebar {
+        grid-area: inferior;
+    }
+
+    .contenido-principal {
+        grid-area: contenido;
+        display: grid;
+        grid-template-areas: "entrada1 entrada2";
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 3rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .layout-shifter {
+        grid-template-areas: "contenido sidebar"; 
+        column-gap: 2rem;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+    .contenido-principal {
+        grid-area: contenido;
+
+        grid-template-areas: "entrada1"
+                             "entrada2";
+        grid-template-columns: unset;
+    }
+}
